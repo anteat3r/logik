@@ -11,7 +11,6 @@ import (
 	"strings"
 
 	"github.com/TwiN/go-color"
-	// "time"
 )
 
 /*
@@ -35,6 +34,7 @@ const (
   NUM_COLORS = 6
   FULL_SEARCH_TRESHOLD = 1140
   LOOP_OVER_ALL_TRESHOLD = 70
+  VERBOSE = false
 )
 var (
   THREADS = 8
@@ -235,15 +235,15 @@ func computer_guess(auto bool) {
     }
     guess := combs[rand.Intn(len(combs))]
     if len(combs) == 1 {
-      fmt.Printf("one comb remaining\n")
+      if VERBOSE { fmt.Printf("one comb remaining\n") }
       guess = combs[0]
     } else if len(combs) < LOOP_OVER_ALL_TRESHOLD {
-      fmt.Printf("loop over all %d\n", len(combs))
+      if VERBOSE { fmt.Printf("loop over all %d\n", len(combs)) }
       guess = find_best_guess_parallel(all_combs, combs)
     } else if len(combs) < FULL_SEARCH_TRESHOLD {
-      fmt.Printf("full search %d\n", len(combs))
+      if VERBOSE { fmt.Printf("full search %d\n", len(combs)) }
       guess = find_best_guess_parallel(nil, combs)
-    } else {
+    } else if VERBOSE {
       fmt.Printf("picking random comb %d\n", len(combs))
     }
     fmt.Printf("%d. ", attempt)

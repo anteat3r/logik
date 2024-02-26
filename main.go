@@ -14,7 +14,6 @@ import (
 )
 
 /*
-idjfdjifji
 Rychlejší a jednodušší optimalizovaná minimalistická implementace Ondrova algoritmu.
 Na začátku vygeneruje všechy možné kombinace a při každém guessu je projde
 a vyřadí ty, které neodpovídají dosud získaným hodnocením.
